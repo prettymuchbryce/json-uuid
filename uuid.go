@@ -49,7 +49,7 @@ func FromBytes(v []byte) UUID {
 	}
 }
 
-// MarshalJSON marshalls the NullUUID as nil or the nested UUID
+// MarshalJSON marshals the NullUUID as nil or the nested UUID
 func (u UUID) MarshalJSON() ([]byte, error) {
 	if !u.Valid {
 		return json.Marshal(nil)
@@ -57,7 +57,7 @@ func (u UUID) MarshalJSON() ([]byte, error) {
 	return json.Marshal(u.UUID)
 }
 
-// UnmarshalJSON unmarshalls a NullUUID
+// UnmarshalJSON unmarshals a NullUUID
 func (u *UUID) UnmarshalJSON(b []byte) error {
 	if bytes.Equal(b, []byte("null")) {
 		u.NullUUID = uuid.NullUUID{
